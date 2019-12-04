@@ -1,0 +1,7 @@
+import pandas as pd
+A = {"Box": ["Box1","Box1","Box1","Box2","Box2","Box2"], 
+     "Dimension": ["Length","Width","Height","Length","Width","Height"],
+     "Value": [6,4,2,5,3,4]}
+B = pd.DataFrame(A, columns=["Box","Dimension","Value"])
+C = B.pivot_table(index=["Box"], columns="Dimension", values="Value")
+D = C.assign(Volume=lambda B: B.Length*B.Width*B.Height)
